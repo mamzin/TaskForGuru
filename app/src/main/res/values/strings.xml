@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">TaskForGuru</string>
+    <string name="ecommerce_concept">Ecommerce\nConcept</string>
+    <string name="circle_splash">circle_splash</string>
+    <string name="name_town">Town</string>
+    <string name="geolabel">geolabel</string>
+    <string name="filter_icon">folter_icon</string>
+    <string name="view_all">view all</string>
+    <string name="select_category">Select Category</string>
+
+    <string-array name="geo_array">
+        <item>Moscow</item>
+        <item>Saratov</item>
+        <item>Penza</item>
+    </string-array>
+</resources>
