@@ -22,7 +22,6 @@ import ru.mamzin.taskforguru.viewmodel.ViewModelFactory
 class MainActivity : AppCompatActivity(), CategoryAdapter.CellClickListener {
 
     lateinit var rv_category: RecyclerView
-    lateinit var iv_circle_category: ImageView
     lateinit var category_adapter: CategoryAdapter
     var category_list = ArrayList<ModelCategory>()
     lateinit var netViewModel: NetViewModel
@@ -36,14 +35,7 @@ class MainActivity : AppCompatActivity(), CategoryAdapter.CellClickListener {
         netViewModel =
             ViewModelProvider(this, ViewModelFactory(mainRepository))[NetViewModel::class.java]
 
-        val spinner: Spinner = findViewById(R.id.spinner)
-        ArrayAdapter.createFromResource(this, R.array.geo_array, android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
-        }
-
-        rv_category = findViewById(R.id.rv_category)
+        rv_category = findViewById(R.id.rv_select_category)
 
 
         category_list.add(ModelCategory(1, "Phones", R.drawable.ic_phone_icon))
@@ -59,8 +51,6 @@ class MainActivity : AppCompatActivity(), CategoryAdapter.CellClickListener {
     }
 
     override fun onCellClickListener(category: ModelCategory) {
-        //iv_circle_category = findViewById(R.id.iv_circle_category)
-        //iv_circle_category.setImageDrawable(getDrawable(R.drawable.ic_ellipse_color))
-        Toast.makeText(this@MainActivity, category.name, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@MainActivity, "Можно повесить ещё какой-то экшен", Toast.LENGTH_SHORT).show()
     }
 }

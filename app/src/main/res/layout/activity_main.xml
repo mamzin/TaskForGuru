@@ -7,170 +7,164 @@
     android:background="@color/basic_bg"
     tools:context=".views.MainActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingTop="20dp">
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:contentDescription="@string/geolabel"
-                android:src="@drawable/ic_geo_label"
-                tools:ignore="ImageContrastCheck" />
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/name_town"
-                android:minHeight="48dp" />
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:contentDescription="@string/filter_icon"
-                android:paddingStart="150dp"
-                android:paddingEnd="5dp"
-                android:src="@drawable/ic_filter_icon" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingStart="20dp"
-                android:paddingEnd="5dp"
-                android:text="@string/select_category"
-                android:textColor="@color/brand_bg"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingStart="5dp"
-                android:paddingEnd="20dp"
-                android:text="@string/view_all"
-                android:textAlignment="viewEnd"
-                android:textColor="@color/view_all"
-                tools:ignore="TextContrastCheck" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:orientation="horizontal">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-    </LinearLayout>
-
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/iv_geolabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="291dp"
-        android:layout_weight="1"
-        android:contentDescription="@string/search_zone"
-        app:layout_constraintEnd_toStartOf="@+id/imageView9"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="30dp"
+        android:contentDescription="@string/geolabel"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_geo_label"
+        tools:ignore="ImageContrastCheck" />
+
+    <Spinner
+        android:id="@+id/spinner_geoplace"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:background="@color/basic_bg"
+        android:contentDescription="@string/name_town"
+        android:entries="@array/geo_array"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_geolabel"
+        app:layout_constraintStart_toEndOf="@+id/iv_geolabel"
+        app:layout_constraintTop_toTopOf="@+id/iv_geolabel" />
+
+    <ImageView
+        android:id="@+id/iv_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:contentDescription="@string/filter_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner_geoplace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/spinner_geoplace"
+        app:srcCompat="@drawable/ic_filter_icon" />
+
+    <TextView
+        android:id="@+id/tv_select_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/select_category"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_geolabel" />
+
+    <TextView
+        android:id="@+id/tv_viewall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:text="@string/view_all"
+        android:textColor="@color/view_all"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_select_category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_select_category"
+        tools:ignore="TextContrastCheck" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_select_category"
+        android:layout_width="306dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_select_category"
+        tools:listitem="@layout/category_list_item" />
+
+    <ImageView
+        android:id="@+id/iv_search_rectangle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:contentDescription="@string/search_zone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_select_category"
         app:srcCompat="@drawable/ic_rectangle_search"
         tools:ignore="ImageContrastCheck" />
 
     <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:id="@+id/iv_search_icon"
+        android:layout_width="24dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="30dp"
         android:contentDescription="@string/search_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintStart_toStartOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:srcCompat="@drawable/ic_search_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_search_rectangle"
+        app:layout_constraintStart_toStartOf="@+id/iv_search_rectangle"
+        app:layout_constraintTop_toTopOf="@+id/iv_search_rectangle"
+        app:srcCompat="@drawable/ic_geo_label"
         tools:ignore="ImageContrastCheck" />
 
     <EditText
-        android:id="@+id/editTextSearch"
+        android:id="@+id/et_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:ems="10"
         android:hint="@string/search"
-        android:importantForAutofill="no"
-        android:inputType="text"
+        android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintStart_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        android:textColorHint="#78909C"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_search_rectangle"
+        app:layout_constraintEnd_toEndOf="@+id/iv_search_rectangle"
+        app:layout_constraintStart_toStartOf="@+id/iv_search_rectangle"
+        app:layout_constraintTop_toTopOf="@+id/iv_search_rectangle"
+        tools:ignore="TextContrastCheck"
+        android:autofillHints="" />
+
+    <ImageView
+        android:id="@+id/iv_qr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:contentDescription="@string/circle_qr"
+        app:layout_constraintBottom_toBottomOf="@+id/et_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_search_rectangle"
+        app:layout_constraintTop_toTopOf="@+id/et_search"
+        app:srcCompat="@drawable/ic_group_qr_icon"
+        tools:ignore="ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/tv_hot_sales"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="@string/hot_sales"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_search_rectangle" />
+
+    <TextView
+        android:id="@+id/tv_seemore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:text="@string/see_more"
+        android:textColor="@color/view_all"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_hot_sales"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_hot_sales"
         tools:ignore="TextContrastCheck" />
 
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="-20dp"
-        android:contentDescription="@string/circle_qr"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:srcCompat="@drawable/ic_rectangle_qr"
-        tools:ignore="ImageContrastCheck" />
-
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/qr"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView9"
-        app:layout_constraintStart_toStartOf="@+id/imageView9"
-        app:layout_constraintTop_toTopOf="@+id/imageView9"
-        app:layout_constraintEnd_toEndOf="@+id/imageView9"
-        app:srcCompat="@drawable/ic_group_qr"
-        tools:ignore="ImageContrastCheck" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/imageView4"
-        app:layout_constraintStart_toStartOf="@id/imageView4"
-        app:layout_constraintTop_toBottomOf="@id/imageView4">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_homestore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_hot_sales"
+        android:layout_width="301dp"
+        android:layout_height="104dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hot_sales" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

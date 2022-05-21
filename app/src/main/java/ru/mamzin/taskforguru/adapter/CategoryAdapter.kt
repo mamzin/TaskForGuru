@@ -25,7 +25,8 @@ class CategoryAdapter(private val categorylist: ArrayList<ModelCategory>,
 
         holder.itemView.setOnClickListener {
             cellClickListener.onCellClickListener(data)
-            holder.iv_circle_category.setImageDrawable(getDrawable(context, R.drawable.ic_ellipse_color))
+            holder.iv_circle_category.isActivated
+            //holder.iv_circle_category.setImageDrawable(getDrawable(context, R.drawable.ic_ellipse_color))
         }
     }
 

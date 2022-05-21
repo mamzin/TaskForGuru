@@ -15,6 +15,8 @@
     <string name="nameofcategory">NameOfCategory</string>
     <string name="iv_circle_category">iv_circle_category</string>
     <string name="iv_category_icon">iv_category_icon</string>
+    <string name="hot_sales">Hot sales</string>
+    <string name="see_more">see more</string>
 
     <string-array name="geo_array">
         <item>Moscow</item>
