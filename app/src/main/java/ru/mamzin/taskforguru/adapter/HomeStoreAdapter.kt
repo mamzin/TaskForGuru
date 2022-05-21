@@ -10,15 +10,15 @@ import ru.mamzin.taskforguru.model.HomeStore
 class HomeStoreAdapter(private val cellClickListener: CellClickListener) :
     RecyclerView.Adapter<HomeStoreAdapter.ViewHolder>() {
 
-    var userlist = mutableListOf<HomeStore>()
+    var homestorelist = mutableListOf<HomeStore>()
 
-    fun setUserList(list: List<HomeStore>) {
-        this.userlist = list.toMutableList()
+    fun setHomeStoreList(list: List<HomeStore>) {
+        this.homestorelist = list.toMutableList()
         notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val data = userlist[position]
+        val data = homestorelist[position]
         holder.bind(data)
         holder.itemView.setOnClickListener {
             cellClickListener.onCellClickListener(data)
@@ -26,7 +26,7 @@ class HomeStoreAdapter(private val cellClickListener: CellClickListener) :
     }
 
     override fun getItemCount(): Int {
-        return userlist.size
+        return homestorelist.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

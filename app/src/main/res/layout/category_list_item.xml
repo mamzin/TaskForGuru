@@ -9,14 +9,11 @@
         android:id="@+id/iv_circle_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/rv_selector_category"
-        android:clickable="true"
         android:contentDescription="@string/iv_circle_category"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_ellipse_category"
-        tools:ignore="ImageContrastCheck"
-        android:focusable="true" />
+        tools:ignore="ImageContrastCheck" />
 
     <ImageView
         android:id="@+id/iv_category_icon"
@@ -36,12 +33,11 @@
         android:id="@+id/tv_NameOfCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:minHeight="48dp"
         android:text="@string/nameofcategory"
         android:textColor="@color/black"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/iv_circle_category"
+        app:layout_constraintStart_toStartOf="@+id/iv_category_icon"
         app:layout_constraintTop_toBottomOf="@+id/iv_circle_category" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/androidprojects/TaskForGuru/app/src/main/res/drawable/comp_icon.xml" value="0.137" />
+        <entry key="..\:/androidprojects/TaskForGuru/app/src/main/res/drawable/ic_ellipse_category.xml" value="0.1435" />
+        <entry key="..\:/androidprojects/TaskForGuru/app/src/main/res/drawable/ic_ellipse_color.xml" value="0.1435" />
+        <entry key="..\:/androidprojects/TaskForGuru/app/src/main/res/drawable/ic_mark_pro.xml" value="0.1435" />
         <entry key="..\:/androidprojects/TaskForGuru/app/src/main/res/drawable/ic_phone_icon.xml" value="0.244" />
         <entry key="..\:/androidprojects/TaskForGuru/app/src/main/res/drawable/ic_vector__2_.xml" value="0.244" />
         <entry key="..\:/androidprojects/TaskForGuru/app/src/main/res/drawable/other_icon.xml" value="0.244" />
@@ -12,7 +15,7 @@
         <entry key="..\:/androidprojects/TaskForGuru/app/src/main/res/drawable/rv_selector_category.xml" value="0.244" />
         <entry key="..\:/androidprojects/TaskForGuru/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/androidprojects/TaskForGuru/app/src/main/res/layout/activity_splash_screen.xml" value="0.264" />
-        <entry key="..\:/androidprojects/TaskForGuru/app/src/main/res/layout/category_list_item.xml" value="0.2" />
+        <entry key="..\:/androidprojects/TaskForGuru/app/src/main/res/layout/category_list_item.xml" value="0.264" />
         <entry key="..\:/androidprojects/TaskForGuru/app/src/main/res/layout/homestore_list_item.xml" value="0.16394927536231885" />
         <entry key="..\:/androidprojects/TaskForGuru/app/src/main/res/layout/test.xml" value="0.264" />
       </map>

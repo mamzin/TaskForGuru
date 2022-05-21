@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toDrawable
 import androidx.recyclerview.widget.RecyclerView
 import ru.mamzin.taskforguru.R
 import ru.mamzin.taskforguru.model.ModelCategory
@@ -18,15 +16,24 @@ class CategoryAdapter(private val categorylist: ArrayList<ModelCategory>,
                       private val cellClickListener: CellClickListener) :
     RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
+    private var lastClickedPosition = -1
+    private var selectedItem = 0
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = categorylist[position]
         holder.tv_NameOfCategory.text = data.name
         holder.iv_category_icon.setImageDrawable(context.getDrawable(data.pic))
+        holder.iv_circle_category.setImageDrawable(getDrawable(context, R.drawable.ic_ellipse_category))
 
+        if (selectedItem == position){
+            holder.iv_circle_category.setImageDrawable(getDrawable(context, R.drawable.ic_ellipse_color))
+        }
         holder.itemView.setOnClickListener {
             cellClickListener.onCellClickListener(data)
-            holder.iv_circle_category.isActivated
-            //holder.iv_circle_category.setImageDrawable(getDrawable(context, R.drawable.ic_ellipse_color))
+            lastClickedPosition = selectedItem
+            selectedItem = position
+            notifyItemChanged(lastClickedPosition)
+            notifyItemChanged(position)
         }
     }
 
