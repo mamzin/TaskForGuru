@@ -16,6 +16,12 @@
     <string name="iv_category_icon">iv_category_icon</string>
     <string name="hot_sales">Hot sales</string>
     <string name="see_more">see more</string>
+    <string name="iphone">Iphone12</string>
+    <string name="hot_sales_description">Súper. Mega. Rápido.</string>
+    <string name="buynow">buynow</string>
+    <string name="new_hot_sales">new_hot_sales</string>
+    <string name="picture_hot_sales">picture_hot_sales</string>
+    <string name="best_sales">Best sales</string>
 
     <string-array name="geo_array">
         <item>Moscow</item>

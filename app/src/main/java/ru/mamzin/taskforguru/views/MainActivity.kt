@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity(),
         Toast.makeText(this@MainActivity, "Можно повесить ещё какой-то экшен, помимо смены цвета иконок", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onCellClickListener(data: HomeStore) {
-        Toast.makeText(this@MainActivity, "Можно повесить какой-то экшен", Toast.LENGTH_SHORT).show()
+    override fun onBuyClickListener(data: HomeStore) {
+        Toast.makeText(this@MainActivity, "Можно положить в корзину", Toast.LENGTH_SHORT).show()
     }
 }

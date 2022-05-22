@@ -1,6 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingStart="5dp"
+    android:paddingEnd="10dp">
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_picture_hot_sales"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:contentDescription="@string/picture_hot_sales"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck"
+        app:shapeAppearanceOverlay="@style/RoundedSquare"
+        tools:srcCompat="@drawable/hot_sales_pic" />
+
+    <ImageView
+        android:id="@+id/iv_new_hot_sales"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:contentDescription="@string/new_hot_sales"
+        app:layout_constraintStart_toStartOf="@+id/iv_picture_hot_sales"
+        app:layout_constraintTop_toTopOf="@+id/iv_picture_hot_sales"
+        app:srcCompat="@drawable/ic_new"
+        tools:ignore="ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/tv_name_hot_sales"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/iphone"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_model_hot_sales"
+        app:layout_constraintStart_toStartOf="@+id/tv_model_hot_sales" />
+
+    <TextView
+        android:id="@+id/tv_model_hot_sales"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hot_sales_description"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/iv_buynow"
+        app:layout_constraintStart_toStartOf="@+id/iv_buynow"
+        tools:ignore="TextContrastCheck" />
+
+    <ImageView
+        android:id="@+id/iv_buynow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="40dp"
+        android:contentDescription="@string/buynow"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_picture_hot_sales"
+        app:layout_constraintStart_toStartOf="@+id/iv_picture_hot_sales"
+        app:srcCompat="@drawable/ic_buy_now" />
 </androidx.constraintlayout.widget.ConstraintLayout>

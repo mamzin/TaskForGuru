@@ -3,9 +3,14 @@ package ru.mamzin.taskforguru.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import kotlinx.android.synthetic.main.homestore_list_item.view.*
 import ru.mamzin.taskforguru.R
 import ru.mamzin.taskforguru.model.HomeStore
+import ru.mamzin.taskforguru.utils.GlideApp
 
 class HomeStoreAdapter(private val cellClickListener: CellClickListener) :
     RecyclerView.Adapter<HomeStoreAdapter.ViewHolder>() {
@@ -20,9 +25,17 @@ class HomeStoreAdapter(private val cellClickListener: CellClickListener) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = homestorelist[position]
         holder.bind(data)
-        holder.itemView.setOnClickListener {
-            cellClickListener.onCellClickListener(data)
+        holder.itemView.iv_buynow.setOnClickListener {
+            cellClickListener.onBuyClickListener(data)
         }
+
+        GlideApp.with(holder.itemView.context)
+            .load(data.picture)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .override(270, 270)
+            .fitCenter()
+            .error(R.drawable.glide_err_foreground)
+            .into(holder.iv_picture_hot_sales)
     }
 
     override fun getItemCount(): Int {
@@ -36,18 +49,23 @@ class HomeStoreAdapter(private val cellClickListener: CellClickListener) :
     }
 
     class ViewHolder(itemLayoutView: View) : RecyclerView.ViewHolder(itemLayoutView) {
-        //var firstname: TextView = itemLayoutView.findViewById(R.id.tvfirst_name)
-        //var lastname: TextView = itemLayoutView.findViewById(R.id.tvlast_name)
+        var title: TextView = itemLayoutView.findViewById(R.id.tv_name_hot_sales)
+        var subtitle: TextView = itemLayoutView.findViewById(R.id.tv_model_hot_sales)
+        var iv_picture_hot_sales: ImageView = itemLayoutView.findViewById(R.id.iv_picture_hot_sales)
+        var iv_new_hot_sales: ImageView = itemLayoutView.findViewById(R.id.iv_new_hot_sales)
 
         fun bind(data: HomeStore) {
-            //firstname.text = data.first_name
-            //lastname.text = data.last_name
+            title.text = data.title
+            subtitle.text = data.subtitle
+            if (!data.is_new){
+                iv_new_hot_sales.visibility = View.GONE
+            }
         }
 
     }
 
     interface CellClickListener {
-        fun onCellClickListener(data: HomeStore)
+        fun onBuyClickListener(data: HomeStore)
     }
 
 }
