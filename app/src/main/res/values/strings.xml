@@ -22,6 +22,11 @@
     <string name="new_hot_sales">new_hot_sales</string>
     <string name="picture_hot_sales">picture_hot_sales</string>
     <string name="best_sales">Best sales</string>
+    <string name="bestseller_pic">bestseller_pic</string>
+    <string name="tv_bestsellername">tv_bestsellername</string>
+    <string name="tv_price">10000</string>
+    <string name="tv_price_before"><strike>10000</strike></string>
+    <string name="favorites">favorites</string>
 
     <string-array name="geo_array">
         <item>Moscow</item>

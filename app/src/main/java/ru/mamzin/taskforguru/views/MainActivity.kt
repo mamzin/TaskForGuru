@@ -5,41 +5,73 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.mamzin.taskforguru.R
+import ru.mamzin.taskforguru.adapter.BestSellerAdapter
 import ru.mamzin.taskforguru.adapter.CategoryAdapter
 import ru.mamzin.taskforguru.adapter.HomeStoreAdapter
+import ru.mamzin.taskforguru.model.BestSeller
 import ru.mamzin.taskforguru.model.HomeStore
 import ru.mamzin.taskforguru.model.ModelCategory
 import ru.mamzin.taskforguru.net.RetrofitService
 import ru.mamzin.taskforguru.repository.NetRepository
-import ru.mamzin.taskforguru.viewmodel.NetViewModel
-import ru.mamzin.taskforguru.viewmodel.ViewModelFactory
+import ru.mamzin.taskforguru.viewmodel.BestSellerViewModel
+import ru.mamzin.taskforguru.viewmodel.HotSalesViewModel
+import ru.mamzin.taskforguru.viewmodel.ViewModelBestsellerFactory
+import ru.mamzin.taskforguru.viewmodel.ViewModelHomeStoreFactory
 
 class MainActivity : AppCompatActivity(),
     CategoryAdapter.CellClickListener,
-    HomeStoreAdapter.CellClickListener {
+    HomeStoreAdapter.CellClickListener,
+    BestSellerAdapter.CellClickListener {
 
     lateinit var rv_category: RecyclerView
     lateinit var rv_home_store: RecyclerView
+    lateinit var rv_best_seller: RecyclerView
+
     lateinit var category_adapter: CategoryAdapter
     lateinit var homestore_adapter: HomeStoreAdapter
+    lateinit var bestseller_adapter: BestSellerAdapter
+
     var category_list = ArrayList<ModelCategory>()
-    lateinit var netViewModel: NetViewModel
+    private lateinit var hotSalesViewModel: HotSalesViewModel
+    private lateinit var bestSellerViewModel: BestSellerViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val mainRepository = NetRepository(RetrofitService.getInstance())
-        netViewModel =
-            ViewModelProvider(this, ViewModelFactory(mainRepository))[NetViewModel::class.java]
-
+        hotSalesViewModel =
+            ViewModelProvider(this, ViewModelHomeStoreFactory(mainRepository))[HotSalesViewModel::class.java]
+        bestSellerViewModel =
+            ViewModelProvider(this, ViewModelBestsellerFactory(mainRepository))[BestSellerViewModel::class.java]
 
         setSelectCategoryList()
         setHomeStoreList()
+        setBestSellerList()
 
+    }
+
+    private fun setBestSellerList() {
+        rv_best_seller = findViewById(R.id.rv_best_seller)
+        rv_best_seller.layoutManager = GridLayoutManager(this, 2)
+        bestseller_adapter = BestSellerAdapter(this@MainActivity)
+        rv_best_seller.adapter = bestseller_adapter
+
+        bestSellerViewModel.listbestseller.observe(this, Observer {
+            if (it != null) {
+                bestseller_adapter.setBestSellerList(it)
+            }
+        })
+
+        bestSellerViewModel.errorMessage.observe(this, Observer {
+            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+        })
+
+        bestSellerViewModel.getAllBestSeller()
     }
 
     private fun setHomeStoreList() {
@@ -48,17 +80,17 @@ class MainActivity : AppCompatActivity(),
         homestore_adapter = HomeStoreAdapter(this@MainActivity)
         rv_home_store.adapter = homestore_adapter
 
-        netViewModel.dataList.observe(this, Observer {
+        hotSalesViewModel.listhomestore.observe(this, Observer {
             if (it != null) {
                 homestore_adapter.setHomeStoreList(it)
             }
         })
 
-        netViewModel.errorMessage.observe(this, Observer {
+        hotSalesViewModel.errorMessage.observe(this, Observer {
             Toast.makeText(this, it, Toast.LENGTH_LONG).show()
         })
 
-        netViewModel.getAllDevices()
+        hotSalesViewModel.getAllHomeStore()
     }
 
     private fun setSelectCategoryList(){
@@ -79,5 +111,9 @@ class MainActivity : AppCompatActivity(),
 
     override fun onBuyClickListener(data: HomeStore) {
         Toast.makeText(this@MainActivity, "Можно положить в корзину", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onFavoritClickListener(data: BestSeller) {
+        Toast.makeText(this@MainActivity, "Можно повесить ещё какой-то экшен, помимо добавления в фавориты", Toast.LENGTH_SHORT).show()
     }
 }

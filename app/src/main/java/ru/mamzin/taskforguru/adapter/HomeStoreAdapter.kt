@@ -32,7 +32,7 @@ class HomeStoreAdapter(private val cellClickListener: CellClickListener) :
         GlideApp.with(holder.itemView.context)
             .load(data.picture)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .override(270, 270)
+            .override(400, 200)
             .fitCenter()
             .error(R.drawable.glide_err_foreground)
             .into(holder.iv_picture_hot_sales)

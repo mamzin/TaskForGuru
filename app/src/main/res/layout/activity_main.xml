@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/basic_bg"
+    android:overScrollMode="always"
+    android:scrollbars="vertical"
     tools:context=".views.MainActivity">
 
     <ImageView
@@ -190,5 +192,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_best_sales"
         tools:ignore="TextContrastCheck" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_best_seller"
+        android:layout_width="370dp"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_seemore_best_sales"
+        app:layout_constraintStart_toStartOf="@+id/tv_best_sales"
+        app:layout_constraintTop_toBottomOf="@+id/tv_best_sales"
+        tools:listitem="@layout/bestseller_list_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
