@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.mamzin.taskforguru.R
 import ru.mamzin.taskforguru.model.ModelCategory
 
-class CategoryAdapter(private val categorylist: ArrayList<ModelCategory>,
-                      private val context: Context,
-                      private val cellClickListener: CellClickListener) :
+class CategoryAdapter(
+    private val categorylist: ArrayList<ModelCategory>,
+    private val context: Context,
+    private val cellClickListener: CellClickListener
+) :
     RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
     private var lastClickedPosition = -1
@@ -23,10 +25,20 @@ class CategoryAdapter(private val categorylist: ArrayList<ModelCategory>,
         val data = categorylist[position]
         holder.tv_NameOfCategory.text = data.name
         holder.iv_category_icon.setImageDrawable(context.getDrawable(data.pic))
-        holder.iv_circle_category.setImageDrawable(getDrawable(context, R.drawable.ic_ellipse_category))
+        holder.iv_circle_category.setImageDrawable(
+            getDrawable(
+                context,
+                R.drawable.ic_ellipse_category
+            )
+        )
 
-        if (selectedItem == position){
-            holder.iv_circle_category.setImageDrawable(getDrawable(context, R.drawable.ic_ellipse_color))
+        if (selectedItem == position) {
+            holder.iv_circle_category.setImageDrawable(
+                getDrawable(
+                    context,
+                    R.drawable.ic_ellipse_color
+                )
+            )
         }
         holder.itemView.setOnClickListener {
             cellClickListener.onCellClickListener(data)

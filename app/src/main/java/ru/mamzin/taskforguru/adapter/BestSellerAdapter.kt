@@ -1,21 +1,16 @@
 package ru.mamzin.taskforguru.adapter
 
-import android.content.Context
 import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import kotlinx.android.synthetic.main.bestseller_list_item.view.*
-import kotlinx.android.synthetic.main.homestore_list_item.view.*
 import ru.mamzin.taskforguru.R
 import ru.mamzin.taskforguru.model.BestSeller
-import ru.mamzin.taskforguru.model.HomeStore
 import ru.mamzin.taskforguru.utils.GlideApp
 
 
@@ -38,7 +33,6 @@ class BestSellerAdapter(private val cellClickListener: CellClickListener) :
         GlideApp.with(holder.itemView.context)
             .load(data.picture)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .fitCenter()
             .error(R.drawable.glide_err_foreground)
             .into(holder.iv_bestseller)
     }
@@ -49,7 +43,8 @@ class BestSellerAdapter(private val cellClickListener: CellClickListener) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.bestseller_list_item, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.bestseller_list_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -66,10 +61,9 @@ class BestSellerAdapter(private val cellClickListener: CellClickListener) :
             tv_price_before.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             tv_price_before.text = data.price_without_discount.toString()
 
-            if (!data.is_favorites){
+            if (!data.is_favorites) {
                 iv_favorites.setImageResource(R.drawable.ic_heart)
-            }
-            else {
+            } else {
                 iv_favorites.setImageResource(R.drawable.ic_fill_heart)
             }
         }

@@ -1,43 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="155dp"
-    android:layout_height="175dp"
+    android:layout_width="165dp"
+    android:layout_height="200dp"
     android:background="@color/white"
-    android:padding="2dp">
+    android:padding="1dp">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_bestseller"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="140dp"
         android:contentDescription="@string/bestseller_pic"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="2dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/RoundedSquare"
         app:srcCompat="@drawable/template_bestseller" />
-
-    <TextView
-        android:id="@+id/tv_bestsellername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/tv_bestsellername"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tv_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:text="@string/tv_price"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tv_bestsellername"
-        app:layout_constraintStart_toStartOf="@+id/tv_bestsellername" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_bestseller" />
+
+    <TextView
+        android:id="@+id/tv_bestsellername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_bestsellername"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_price"
+        app:layout_constraintTop_toBottomOf="@+id/tv_price" />
 
     <TextView
         android:id="@+id/tv_price_before"
@@ -45,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/tv_price_before"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_price"
         app:layout_constraintStart_toEndOf="@+id/tv_price" />
 
@@ -53,10 +54,10 @@
         android:id="@+id/iv_favorites"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="2dp"
+        android:layout_marginEnd="24dp"
         android:contentDescription="@string/favorites"
         app:layout_constraintEnd_toEndOf="@+id/iv_bestseller"
         app:layout_constraintTop_toTopOf="@+id/iv_bestseller"
         app:srcCompat="@drawable/ic_fill_heart" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

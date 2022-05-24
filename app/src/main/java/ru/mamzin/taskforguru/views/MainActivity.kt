@@ -1,8 +1,8 @@
 package ru.mamzin.taskforguru.views
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -45,9 +45,15 @@ class MainActivity : AppCompatActivity(),
 
         val mainRepository = NetRepository(RetrofitService.getInstance())
         hotSalesViewModel =
-            ViewModelProvider(this, ViewModelHomeStoreFactory(mainRepository))[HotSalesViewModel::class.java]
+            ViewModelProvider(
+                this,
+                ViewModelHomeStoreFactory(mainRepository)
+            )[HotSalesViewModel::class.java]
         bestSellerViewModel =
-            ViewModelProvider(this, ViewModelBestsellerFactory(mainRepository))[BestSellerViewModel::class.java]
+            ViewModelProvider(
+                this,
+                ViewModelBestsellerFactory(mainRepository)
+            )[BestSellerViewModel::class.java]
 
         setSelectCategoryList()
         setHomeStoreList()
@@ -93,7 +99,7 @@ class MainActivity : AppCompatActivity(),
         hotSalesViewModel.getAllHomeStore()
     }
 
-    private fun setSelectCategoryList(){
+    private fun setSelectCategoryList() {
         rv_category = findViewById(R.id.rv_select_category)
         category_list.add(ModelCategory(1, "Phones", R.drawable.ic_phone_icon))
         category_list.add(ModelCategory(2, "Computers", R.drawable.comp_icon))
@@ -106,7 +112,11 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onCellClickListener(category: ModelCategory) {
-        Toast.makeText(this@MainActivity, "Можно повесить ещё какой-то экшен, помимо смены цвета иконок", Toast.LENGTH_SHORT).show()
+        Toast.makeText(
+            this@MainActivity,
+            "Можно повесить ещё какой-то экшен, помимо смены цвета иконок",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     override fun onBuyClickListener(data: HomeStore) {
@@ -114,6 +124,10 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onFavoritClickListener(data: BestSeller) {
-        Toast.makeText(this@MainActivity, "Можно повесить ещё какой-то экшен, помимо добавления в фавориты", Toast.LENGTH_SHORT).show()
+        Toast.makeText(
+            this@MainActivity,
+            "Можно повесить ещё какой-то экшен, помимо добавления в фавориты",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }

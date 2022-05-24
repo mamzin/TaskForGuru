@@ -6,7 +6,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import ru.mamzin.taskforguru.model.BestSeller
-import ru.mamzin.taskforguru.model.HomeStore
 import ru.mamzin.taskforguru.model.ModelResponseStore
 import ru.mamzin.taskforguru.repository.NetRepository
 

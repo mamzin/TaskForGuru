@@ -57,7 +57,7 @@ class HomeStoreAdapter(private val cellClickListener: CellClickListener) :
         fun bind(data: HomeStore) {
             title.text = data.title
             subtitle.text = data.subtitle
-            if (!data.is_new){
+            if (!data.is_new) {
                 iv_new_hot_sales.visibility = View.GONE
             }
         }
